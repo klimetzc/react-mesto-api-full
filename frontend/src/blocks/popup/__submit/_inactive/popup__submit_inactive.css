@@ -1,0 +1,13 @@
+.popup__submit_inactive {
+  background: var(--additional-color);
+  border: 1px solid var(--hover-icon);
+  color: var(--hover-icon);
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.popup__submit_inactive:hover {
+  background: var(--additional-color);
+  border: 1px solid var(--hover-icon);
+  color: var(--hover-icon);
+}

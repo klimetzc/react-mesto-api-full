@@ -1,0 +1,32 @@
+.popup__input {
+  width: 100%;
+  /* margin-bottom: 30px; */
+  padding: 0 0 8px 0;
+
+  position: relative;
+
+  border: none;
+  /* border-bottom: 1px solid var(--primary-color); */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: var(--primary-color);
+  background-color: var(--additional-color);
+}
+
+.popup__input:invalid {
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: right 6.5px top 6.5px;
+}
+
+/* .popup__input:valid {
+  border-color: #9CCC65;
+} */
+
+.popup__input:focus {
+  outline-width: 0;
+}

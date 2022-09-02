@@ -1,0 +1,15 @@
+.element__like_active {
+  background-image: url("../../../../images/buttons/like/like_active.svg");
+}
+
+.element__like_active:hover {
+  background-image: url("../../../../images/buttons/like/like_activeHovered.svg");
+}
+
+.element__like_active.element__like_theme_light:hover {
+  background-image: url("../../../../images/buttons/like/like_activeHovered.svg");
+}
+
+.element__like_active.element__like_theme_light {
+  background-image: url("../../../../images/buttons/like/dark/like_activeDark.svg");
+}

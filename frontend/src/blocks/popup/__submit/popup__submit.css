@@ -1,0 +1,38 @@
+.popup__submit {
+  width: 100%;
+  padding: 14px 18px 14px 18px;
+  margin-top: 16px;
+  border: 1px solid var(--primary-color);
+  box-sizing: border-box;
+
+  color: var(--additional-color);
+  background-color: var(--primary-color);
+  cursor: pointer;
+
+  /* border: none; */
+  border-radius: 2px;
+  transition: 0.3s;
+
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.popup__submit:disabled:hover {
+  /* background-color: gray; */
+  cursor: default;
+}
+
+.popup__submit:hover {
+  background-color: var(--hover-button);
+  border-color: var(--hover-button);
+  color: var(--hover-text);
+}
+
+@media screen and (max-width: 550px) {
+  .popup__submit {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

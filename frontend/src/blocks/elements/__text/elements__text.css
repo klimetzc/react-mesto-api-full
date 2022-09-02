@@ -1,0 +1,10 @@
+.elements__text {
+  width: 100%;
+  display: block;
+  text-align: center;
+  color: #545454;
+  font-size: 30px;
+  /*padding: 40px;*/
+  grid-column: span 3;
+  user-select: none;
+}

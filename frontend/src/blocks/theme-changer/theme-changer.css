@@ -1,0 +1,8 @@
+.theme-changer {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url("../../images/sun-solid.svg");
+}

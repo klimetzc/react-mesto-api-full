@@ -1,0 +1,10 @@
+.icon {
+  width: inherit;
+  height: inherit;
+}
+
+@media screen and (max-width: 550px) {
+  .icon {
+    transform: scale(0.7);
+  }
+}

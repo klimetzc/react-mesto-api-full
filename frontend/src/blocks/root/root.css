@@ -1,0 +1,26 @@
+.root {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000000;
+
+}
+
+/* #root {
+  --primary-color: #000000;
+  --additional-color: #ffffff;
+  --hover-button: rgba(0, 0, 0, 0.8);
+  --hover-icon: #999999;
+  --hover-text: white;
+  background-color: var(--primary-color);
+  min-height: 100vh;
+  /* overflow-x: clip; */
+/* } */
+
+#root {
+  --primary-color: #000000;
+  --additional-color: #ffffff;
+  --hover-button: rgba(0, 0, 0, 0.8);
+  --hover-icon: #999999;
+  --hover-text: white;
+  background-color: var(--primary-color);
+  min-height: 100vh;
+}

@@ -1,0 +1,18 @@
+.login__button {
+  background-color: var(--additional-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 2px;
+  width: 100%;
+  padding: 14px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+  margin-top: 216px;
+  transition: .6s;
+}
+
+.login__button:hover {
+  background-color: var(--hover-icon);
+}

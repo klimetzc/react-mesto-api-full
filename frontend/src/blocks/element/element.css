@@ -1,0 +1,19 @@
+.element {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-self: center;
+
+  width: 100%;
+
+  background-color: var(--additional-color);
+  color: var(--primary-color);
+  border-radius: 10px;
+
+  overflow: hidden;
+  align-items: center;
+
+}
+
+

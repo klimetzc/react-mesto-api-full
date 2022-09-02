@@ -1,0 +1,7 @@
+.page_theme_light {
+  --primary-color: white;
+  --additional-color: #1b1b1b;
+  --hover-button: #1b1b1b;
+  /* --hover-text: white; */
+  /* --hover-button: white; */
+}

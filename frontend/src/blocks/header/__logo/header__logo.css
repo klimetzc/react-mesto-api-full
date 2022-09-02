@@ -1,0 +1,17 @@
+.header__logo {
+  display: block;
+  padding-bottom: 41px;
+  background-image: url("../../../images/logo_light.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  width: 142px;
+  height: 33px;
+}
+
+@media screen and (max-width: 550px) {
+  .header__logo {
+    width: 103px;
+    padding-bottom: 30px;
+  }
+}

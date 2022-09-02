@@ -1,0 +1,8 @@
+.login__link {
+  color: var(--additional-color);
+  text-decoration: none;
+}
+
+.login__link:hover {
+  text-decoration: underline;
+}

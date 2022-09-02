@@ -1,0 +1,7 @@
+.popup_opened {
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all .4s ease 0s;
+
+}

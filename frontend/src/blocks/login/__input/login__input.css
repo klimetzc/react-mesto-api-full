@@ -1,0 +1,17 @@
+.login__input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 30px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--additional-color);
+  color: var(--additional-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  padding-bottom: 13px;
+}
+
+.login__input:focus {
+  outline: 0;
+}

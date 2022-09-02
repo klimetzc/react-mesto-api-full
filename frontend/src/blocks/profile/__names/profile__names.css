@@ -1,0 +1,9 @@
+.profile__names {
+  width: 300px;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__names {
+    max-width: 200px;
+  }
+}

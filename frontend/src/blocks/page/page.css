@@ -1,0 +1,29 @@
+.page {
+  /* --primary-color: #000000;
+  --additional-color: #ffffff;
+  --hover-button: rgba(0, 0, 0, 0.8);
+  --hover-icon: #999999;
+  --hover-text: white; */
+  /* max-width: 880px; */
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  /* margin: 0; */
+  /* padding: 0 20px 0; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--primary-color);
+  color: var(--additional-color);
+  font-family: Inter, Roboto, sans-serif;
+
+  transition: 0.4s;
+}
+
+@media screen and (max-width: 550px) {
+  .page {
+    padding: 0;
+  }
+}
