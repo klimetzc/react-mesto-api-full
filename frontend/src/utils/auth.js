@@ -51,7 +51,7 @@ class Auth {
 
 const auth = new Auth({
   // baseURL: "http://localhost:3000",
-  baseURL: 'http://api.mesto.klimetzc.nomorepartiesxyz.ru',
+  baseURL: 'https://api.mesto.klimetzc.nomorepartiesxyz.ru',
   headers: {
     "Content-Type": "application/json",
   },

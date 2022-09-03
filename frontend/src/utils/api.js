@@ -112,7 +112,7 @@ class Api {
 
 const api = new Api({
   // baseUrl: "http://localhost:3000",
-  baseUrl: 'http://api.mesto.klimetzc.nomorepartiesxyz.ru',
+  baseUrl: 'https://api.mesto.klimetzc.nomorepartiesxyz.ru',
   headers: {
     // authorization: "ea87a304-62ec-4c62-9662-e334c0349881",
     authorization: `Bearer ${localStorage.getItem('JWT')}`,
