@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
-import { Cards } from "./App";
+import React, {useContext, useEffect} from "react";
+import {Cards, LoggedIn} from "./App";
 import Element from "./Element";
 
 const Elements = (props) => {
   const [cards, setCards] = useContext(Cards);
+  const [loggedIn, setLoggedIn] = useContext(LoggedIn);
 
   return (
     <section className="elements">
@@ -18,9 +19,9 @@ const Elements = (props) => {
             src={item.link}
             title={item.name}
             likes={item.likes}
-            user={props.user}
             owner={item.owner}
             setCurrentCard={props.setCurrentCard}
+            card={item}
           />
         );
       }).reverse()}

@@ -48,9 +48,11 @@ const App = () => {
     alt: "Новое место",
   });
 
-  const addCard = (placeName, placeLink) => {
+  const [jwtToken, setJwtToken] = useState(localStorage.getItem("JWT"));
+
+  const addCard = (placeName, placeLink, jwtToken) => {
     api
-      .addCard(placeName, placeLink)
+      .addCard(placeName, placeLink, jwtToken)
       .then((res) => {
         setCards([...cards, res.data]);
       })
@@ -59,9 +61,9 @@ const App = () => {
       });
   };
 
-  const updateAvatar = (inputAvatar) => {
+  const updateAvatar = (inputAvatar, jwtToken) => {
     api
-      .updateUserAvatar(inputAvatar)
+      .updateUserAvatar(inputAvatar, jwtToken)
       .then((res) => {
         setUser(res.data);
       })
@@ -70,9 +72,9 @@ const App = () => {
       });
   };
 
-  const deleteCard = (currentCard) => {
+  const deleteCard = (currentCard, jwtToken) => {
     api
-      .deleteCard(currentCard)
+      .deleteCard(currentCard, jwtToken)
       .then((res) => {
         setCards(cards.filter((item) => item._id !== currentCard));
       })
@@ -81,9 +83,9 @@ const App = () => {
       });
   };
 
-  const updateUserInfo = (inputName, inputProfession) => {
+  const updateUserInfo = (inputName, inputProfession, jwtToken) => {
     api
-      .updateUserInfo(inputName, inputProfession)
+      .updateUserInfo(inputName, inputProfession, jwtToken)
       .then((res) => {
         setUser(res.data);
       })
@@ -115,8 +117,9 @@ const App = () => {
   const loginSubmit = async (event, email, password) => {
     event.preventDefault();
     const login = await auth.login(email, password);
+    // const loginJson = await login.json();
     if (login.ok) {
-      console.log('Login is ok');
+      setJwtToken(localStorage.getItem("JWT"));
       setLoggedIn(true);
       setUserEmail(email);
     } else {
@@ -147,10 +150,11 @@ const App = () => {
     openInfoTooltip();
   };
 
-  const getPageInfo = () => {
+  const getPageInfo = (jwtToken) => {
     api
-      .getUserData()
+      .getUserData(jwtToken)
       .then((res) => {
+
         setUser(res.data);
       })
       .catch((err) => {
@@ -158,7 +162,7 @@ const App = () => {
       });
 
     api
-      .getCards()
+      .getCards(jwtToken)
       .then((res) => {
         setCards(res.data);
         setIsTextShown(false);
@@ -175,9 +179,10 @@ const App = () => {
   useEffect(() => {
     closeInfoTooltip();
     if (loggedIn) {
-      getPageInfo();
+
+      getPageInfo(jwtToken);
     }
-  }, [loggedIn]);
+  }, [loggedIn, jwtToken]);
 
   useEffect(() => {
     console.log("Перезагрузка страницы");
@@ -187,7 +192,7 @@ const App = () => {
         .verify(localStorage.getItem("JWT"))
         .then((res) => {
           setLoggedIn(true);
-          getPageInfo();
+          getPageInfo(jwtToken);
           navigate("/");
           setUserEmail(res.data.email);
         })
@@ -213,8 +218,6 @@ const App = () => {
                       element={
                         <ProtectedRoute>
                           <Main
-                            user={user}
-                            cards={cards}
                             setImgInPopup={setImgInPopup}
                             textMessage={textMessage}
                             isTextShown={isTextShown}

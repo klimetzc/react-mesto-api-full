@@ -1,11 +1,12 @@
-import React, { useState, useContext } from "react";
-import { Theme, User, Visibles } from "./App";
+import React, {useState, useContext, useEffect} from "react";
+import {LoggedIn, Theme, User, Visibles} from "./App";
 import api from "../utils/api";
 
 const Element = (props) => {
   const [popups, setter] = useContext(Visibles);
   const [theme, setTheme] = useContext(Theme);
   const [user, setUser] = useContext(User);
+  const [loggedIn, setLoggedIn] = useContext(LoggedIn);
   const [isLiked, setIsLiked] = useState(props.likes.some((item) => item === user._id));
   const [isCardOwnByCurrentUser, setIsOwner] = useState(user._id === props.owner);
   const [likesLength, setLikesLength] = useState(props.likes.length);
@@ -30,19 +31,25 @@ const Element = (props) => {
   };
 
   const handleClickLike = () => {
-    console.log(props.user);
+
     if (!isLiked) {
-      api.addLike(props.cardId).then((res) => {
+      api.addLike(props.cardId, localStorage.getItem("JWT")).then((res) => {
         setIsLiked(true);
         setLikesLength(res.data.likes.length);
       });
     } else {
-      api.removeLike(props.cardId).then((res) => {
+      api.removeLike(props.cardId, localStorage.getItem("JWT")).then((res) => {
         setIsLiked(false);
         setLikesLength(res.data.likes.length);
       });
     }
   };
+
+  useEffect(()=>{
+    setIsLiked(props.likes.some((item) => item === user._id));
+    setIsOwner(user._id === props.owner);
+    setLikesLength(props.card.likes.length);
+  },[loggedIn, user, props.card]);
 
   return (
     <article className="element">
