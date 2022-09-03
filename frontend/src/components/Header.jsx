@@ -18,7 +18,7 @@ const Header = (props) => {
   return (
     <header className="header">
       <a
-        href="https://github.com/klimetzc/mesto-react"
+        href="https://github.com/klimetzc/react-mesto-api-full"
         target="_blank"
         className={`header__logo ${theme && "header__logo_theme_light"}`}
         rel="noreferrer"

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ const { login, createUser } = require('./controllers/users');
 const { errorHandling } = require('./middlewares/errorHandling');
 const { NotFoundError } = require('./utils/Errors/NotFoundError');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
+const cors = require('cors');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -26,6 +28,15 @@ mongoose.connect('mongodb://localhost:27017/mestodb', options, (err) => {
 });
 
 app.use(requestLogger);
+
+app.use(cors({
+  origin: [
+    'https://mesto.klimetzc.nomoredomains.sbs',
+    'http://localhost:3006',
+    'http://localhost:3000'
+  ],
+    credentials: true,
+}));
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

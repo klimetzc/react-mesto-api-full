@@ -23,7 +23,7 @@ const Elements = (props) => {
             setCurrentCard={props.setCurrentCard}
           />
         );
-      })}
+      }).reverse()}
     </section>
   );
 };

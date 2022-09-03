@@ -5,6 +5,7 @@ const { jwtSecretKey } = require('../utils/constants');
 const { NotFoundError } = require('../utils/Errors/NotFoundError');
 const { ConflictError } = require('../utils/Errors/ConflictError');
 const { BadRequestError } = require('../utils/Errors/BadRequestError');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -55,7 +56,7 @@ module.exports.createUser = async (req, res, next) => {
     })
       .then((data) => {
         res.send({
-          user: {
+          data: {
             email: data.email,
             name: data.name,
             about: data.about,
@@ -77,8 +78,8 @@ module.exports.updateUserInfo = (req, res, next) => {
     { $set: { name, about } },
     { new: true, runValidators: true },
   )
-    .then((user) => {
-      res.send({ user });
+    .then((data) => {
+      res.send({ data });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') next(new BadRequestError('Переданы некорректны данные'));
@@ -103,7 +104,7 @@ module.exports.login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, jwtSecretKey, { expiresIn: '7days' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production'? JWT_SECRET : 'secret', { expiresIn: '7days' });
       res
         .cookie('jwt', token, {
           maxAge: 36000000 * 24 * 7,

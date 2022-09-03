@@ -52,7 +52,7 @@ const App = () => {
     api
       .addCard(placeName, placeLink)
       .then((res) => {
-        setCards([res, ...cards]);
+        setCards([...cards, res.data]);
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +63,7 @@ const App = () => {
     api
       .updateUserAvatar(inputAvatar)
       .then((res) => {
-        setUser(res);
+        setUser(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +85,7 @@ const App = () => {
     api
       .updateUserInfo(inputName, inputProfession)
       .then((res) => {
-        setUser(res);
+        setUser(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -116,6 +116,7 @@ const App = () => {
     event.preventDefault();
     const login = await auth.login(email, password);
     if (login.ok) {
+      console.log('Login is ok');
       setLoggedIn(true);
       setUserEmail(email);
     } else {
@@ -143,7 +144,6 @@ const App = () => {
       setTooltipPositive(false);
       setTooltipMessage("Что-то пошло не так! Попробуйте ещё раз.");
     }
-    console.log("regData: ", reg);
     openInfoTooltip();
   };
 
@@ -151,7 +151,7 @@ const App = () => {
     api
       .getUserData()
       .then((res) => {
-        setUser(res);
+        setUser(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -160,7 +160,7 @@ const App = () => {
     api
       .getCards()
       .then((res) => {
-        setCards(res);
+        setCards(res.data);
         setIsTextShown(false);
       })
       .catch((err) => {

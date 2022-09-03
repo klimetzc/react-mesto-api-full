@@ -3,25 +3,14 @@ class Auth {
     this._baseURL = settings.baseURL;
     this._headers = settings.headers;
   }
-  loginNotAsync(email, password) {
-    return fetch(`${this._baseURL}signin`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-  }
 
   async register(email, password) {
-    const res = await fetch(`${this._baseURL}signup`, {
+    const res = await fetch(`${this._baseURL}/signup`, {
       method: "POST",
       // mode: "no-cors",
-      headers: { ...this._headers },
+      headers: {
+        ...this._headers
+      },
       body: JSON.stringify({
         password: password,
         email: email,
@@ -34,11 +23,11 @@ class Auth {
   }
 
   async login(email, password) {
-    const response = await fetch(`${this._baseURL}signin`, {
+    const response = await fetch(`${this._baseURL}/signin`, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ email, password }),
     });
@@ -48,7 +37,7 @@ class Auth {
   }
 
   async verify(jwt) {
-    const res = await fetch(`${this._baseURL}users/me`, {
+    const res = await fetch(`${this._baseURL}/users/me`, {
       method: "GET",
       headers: {
         ...this._headers,
@@ -61,7 +50,8 @@ class Auth {
 }
 
 const auth = new Auth({
-  baseURL: "https://auth.nomoreparties.co/",
+  // baseURL: "http://localhost:3000",
+  baseURL: 'http://api.mesto.klimetzc.nomorepartiesxyz.ru',
   headers: {
     "Content-Type": "application/json",
   },

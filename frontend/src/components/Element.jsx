@@ -6,8 +6,8 @@ const Element = (props) => {
   const [popups, setter] = useContext(Visibles);
   const [theme, setTheme] = useContext(Theme);
   const [user, setUser] = useContext(User);
-  const [isLiked, setIsLiked] = useState(props.likes.some((item) => item._id === user._id));
-  const [isCardOwnByCurrentUser, setIsOwner] = useState(user._id === props.owner._id);
+  const [isLiked, setIsLiked] = useState(props.likes.some((item) => item === user._id));
+  const [isCardOwnByCurrentUser, setIsOwner] = useState(user._id === props.owner);
   const [likesLength, setLikesLength] = useState(props.likes.length);
 
   const handleImageClick = () => {
@@ -34,12 +34,12 @@ const Element = (props) => {
     if (!isLiked) {
       api.addLike(props.cardId).then((res) => {
         setIsLiked(true);
-        setLikesLength(res.likes.length);
+        setLikesLength(res.data.likes.length);
       });
     } else {
       api.removeLike(props.cardId).then((res) => {
         setIsLiked(false);
-        setLikesLength(res.likes.length);
+        setLikesLength(res.data.likes.length);
       });
     }
   };
