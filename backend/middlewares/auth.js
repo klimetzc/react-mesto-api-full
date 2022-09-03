@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
   // }
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return next(new UnauthorizedError('Необходима авторизация МЕДЕВДЬ'));
+    return next(new UnauthorizedError('Необходима авторизация'));
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
   try {
     payload = jsonwebtoken.verify(token, NODE_ENV === 'production'? JWT_SECRET : 'secret');
   } catch (err) {
-    next(new UnauthorizedError('Необходима авторизация tam'));
+    next(new UnauthorizedError('Необходима авторизация'));
   }
 
   req.user = payload;
